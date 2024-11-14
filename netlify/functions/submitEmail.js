@@ -1,8 +1,8 @@
 // netlify/functions/submitEmail.js
 const { MongoClient } = require('mongodb');
 
-const uri = process.env.MONGODB_URI; // Securely retrieve MongoDB URI from environment variables
 let client;
+const uri = process.env.MONGODB_URI;
 
 exports.handler = async function(event) {
     if (event.httpMethod !== 'POST') {
@@ -22,7 +22,7 @@ exports.handler = async function(event) {
     }
 
     try {
-        // Initialize MongoDB client
+        // Initialize MongoDB client if not already connected
         if (!client) {
             client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
             await client.connect();
@@ -39,7 +39,8 @@ exports.handler = async function(event) {
             body: JSON.stringify({ message: 'Email submitted successfully!' }),
         };
     } catch (error) {
-        console.error('Error storing email:', error);
+        console.error('Error storing email:', error); // Log error for debugging
+
         return {
             statusCode: 500,
             body: JSON.stringify({ message: 'Internal Server Error' }),
