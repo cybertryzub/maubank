@@ -1,2 +1,14 @@
-npm init -y
-npm install mongodb
+{
+    "name": "maubank-email-app",
+    "version": "1.0.0",
+    "description": "A serverless application to collect and store emails in MongoDB Atlas",
+    "main": "index.js",
+    "scripts": {
+      "start": "netlify dev"  // Optional, allows local testing if Netlify CLI is installed
+    },
+    "dependencies": {
+      "mongodb": "^4.0.0" // The latest version at the time of setup
+    },
+    "license": "MIT"
+  }
+  
