@@ -1,4 +1,3 @@
-// netlify/functions/submitEmail.js
 const { MongoClient } = require('mongodb');
 
 let client;
@@ -22,7 +21,6 @@ exports.handler = async function(event) {
     }
 
     try {
-        // Initialize MongoDB client if not already connected
         if (!client) {
             client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
             await client.connect();
@@ -31,7 +29,6 @@ exports.handler = async function(event) {
         const database = client.db('maubank');
         const collection = database.collection('emails');
 
-        // Insert email document
         await collection.insertOne({ email: email, timestamp: new Date() });
 
         return {
@@ -39,11 +36,12 @@ exports.handler = async function(event) {
             body: JSON.stringify({ message: 'Email submitted successfully!' }),
         };
     } catch (error) {
-        console.error('Error storing email:', error); // Log error for debugging
+        // Log specific error details for better debugging
+        console.error('Detailed error:', error); 
 
         return {
             statusCode: 500,
-            body: JSON.stringify({ message: 'Internal Server Error' }),
+            body: JSON.stringify({ message: 'Internal Server Error', details: error.message }),
         };
     }
 };
