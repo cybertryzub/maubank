@@ -5,47 +5,60 @@ body {
     text-align: center;
     margin: 0;
     padding: 0;
-}
-.container {
+  }
+  
+  .container {
     padding: 20px;
-}
-.banner {
+  }
+  
+  .banner {
     width: 70%;
     margin-bottom: 10px;
-}
-.success-message, #form-container {
-    background-color: #4CAF50;
-    color: #fff;
+  }
+  
+  form {
+    background-color: #555;
     padding: 20px;
     border-radius: 5px;
-    margin: 20px auto;
     max-width: 600px;
-    font-size: 18px;
-}
-.amazon-logo {
-    width: 100px;
-    margin-top: 10px;
-}
-.message-text {
-    font-size: 16px;
-    color: #fff;
-    margin-top: 15px;
-}
-input[type="email"] {
+    margin: 0 auto;
+  }
+  
+  input[type="email"] {
     padding: 10px;
     font-size: 16px;
-    width: 80%;
-    margin: 10px 0;
-}
-button {
+    width: calc(100% - 24px);
+    margin-top: 10px;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: white;
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
+    margin-top: 10px;
     cursor: pointer;
-    border-radius: 5px;
-}
-button:hover {
+  }
+  
+  button:hover {
     background-color: #45a049;
-}
+  }
+  
+  #successMessage {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 600px;
+    margin: 20px auto;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .amazon-logo {
+    width: 100px;
+    margin-top: 10px;
+  }
+  

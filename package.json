@@ -1,14 +1,12 @@
 {
-    "name": "maubank-email-app",
+    "name": "maubank",
     "version": "1.0.0",
-    "description": "A serverless application to collect and store emails in MongoDB Atlas",
     "main": "index.js",
     "scripts": {
       "start": "netlify dev"
     },
     "dependencies": {
-      "mongodb": "^4.0.0"
-    },
-    "license": "MIT"
+      "mongodb": "^4.1.0"
+    }
   }
   
