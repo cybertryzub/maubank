@@ -1,7 +1,10 @@
 const { MongoClient } = require('mongodb');
 
+// MongoDB Atlas connection string
+const uri = 'mongodb+srv://rahul19707:l4769YwbK88N2z2M@your_cluster_url.mongodb.net/?retryWrites=true&w=majority';
+
 let client;
-const uri = process.env.MONGODB_URI;
+let database;
 
 exports.handler = async function(event) {
   if (event.httpMethod !== 'POST') {
@@ -21,14 +24,16 @@ exports.handler = async function(event) {
   }
 
   try {
+    // Connect to MongoDB
     if (!client) {
       client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
       await client.connect();
     }
 
-    const database = client.db('maubank');
-    const collection = database.collection('emails');
+    database = client.db('maubank'); // Database name
+    const collection = database.collection('email'); // Collection name
 
+    // Insert email into the collection
     await collection.insertOne({ email: email, timestamp: new Date() });
 
     return {
